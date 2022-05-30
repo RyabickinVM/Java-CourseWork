@@ -1,4 +1,4 @@
-# Java Coursework
+# Java Course Work
 <p align = "center">
   Вариант 4: Автоматизация домашнего бюджета
 </p>
