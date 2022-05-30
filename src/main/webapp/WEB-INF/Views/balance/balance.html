@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Balance: Info</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1>Domestic Budget Automation</h1>
+    <h2>Balance</h2>
+    <h2>Info</h2>
+    <button><a th:href="@{/balance/balances}">Back</a></button>
+</div>
+<hr>
+<div style="text-align:center">
+    <h2>
+        #<span th:text="${balance.getId()}">id</span>
+        <br/>
+        Creation Date: <span th:text="${balance.getCreate_date()}">create_date</span>
+        <br/>
+        Debit: <span th:text="${balance.getDebit()}">debit</span>
+        <br/>
+        Credit: <span th:text="${balance.getCredit()}">credit</span>
+        <br/>
+        Amount: <span th:text="${balance.getAmount()}">amount</span>
+    </h2>
+</div>
+<hr>
+</body>
+</html>

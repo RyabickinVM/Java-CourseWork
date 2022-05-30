@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles: Actions</title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1>Domestic Budget Automation</h1>
+        <h2>Articles</h2>
+        <h2>Actions</h2>
+        <button><a th:href="@{/articles/articles}">Back</a></button>
+    </div>
+    <hr>
+    <div style="text-align:center">
+        <h2>Update</h2>
+        <form th:method="POST" th:action="@{/articles/updateArticle/{id}(id=${article.getId()})}" th:object="${article}">
+            <label for="name">Name: </label>
+            <input type="text" th:field="*{name}" placeholder="Name" id="name"/>
+            <br/>
+            <br/>
+            <input type="submit" value="Update"/>
+        </form>
+        <br/>
+        <h2>Delete</h2>
+        <form th:method="POST" th:action="@{/articles/deleteArticle/{id}(id=${article.getId()})}">
+            <input type="submit" value="Delete"/>
+        </form>
+    </div>
+    <hr>
+</body>
+</html>

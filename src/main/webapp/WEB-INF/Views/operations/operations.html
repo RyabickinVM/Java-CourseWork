@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Operations: Table</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1>Domestic Budget Automation</h1>
+    <h2>Operations</h2>
+    <h2>Table</h2>
+    <button><a th:href="@{/operations/addOperation}">Add</a></button>
+    <button><a th:href="@{/}">Back</a></button>
+    <form style="display: inline;" th:method="POST" th:action="@{/operations/delete}">
+        <input type="submit" value="Clear"/>
+    </form>
+    <button><a th:href="@{/operations/operations}">Show All (Default)</a></button>
+    <button><a th:href="@{/operations/getByGreaterDebit}">Show By Greater Debit</a></button>
+    <button><a th:href="@{/operations/getByGreaterCredit}">Show By Greater Credit</a></button>
+    <br/>
+    <br/>
+    <form th:method="POST" th:action="@{/operations/getByArticleName}">
+        <label for="name">Show By Article Name: </label>
+        <input type="text" th:name="name" placeholder="Article's Name" id="name"/>
+        <input type="submit" value="Show"/>
+    </form>
+    <br/>
+    <form th:method="POST" th:action="@{/operations/getByArticleId}">
+        <label for="articleId">Show By Article #: </label>
+        <input type="text" th:name="id" id="articleId" placeholder="Article #"/>
+        <input type="submit" value="Show"/>
+    </form>
+    <br/>
+    <form th:method="POST" th:action="@{/operations/deleteByArticleName}">
+        <label for="nameDel">Delete Operation By Article Name #: </label>
+        <input type="text" th:name="name" id="nameDel" placeholder="Article Name"/>
+        <input type="submit" value="Delete"/>
+    </form>
+</div>
+<hr>
+<section>
+    <div>
+        <table style="width:100%">
+            <thead>
+            <tr style="text-align: center; width: 30px">
+                <th>#</th>
+                <th>Article #</th>
+                <th>Debit</th>
+                <th>Credit</th>
+                <th>Creation Date</th>
+                <th>Balance #</th>
+                <th>...</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center">
+            <tr th:each = "operation: ${operations}">
+                <td>
+                    <a th:href="@{/operations/getOperation/{id}(id=${operation.getId()})}"
+                       th:text="${operation.id}">
+                        #
+                    </a>
+                </td>
+                <td th:text="${operation.article.id}">Article #</td>
+                <td th:text="${operation.debit}">Debit</td>
+                <td th:text="${operation.credit}">Credit</td>
+                <td th:text="${operation.create_date}">Creation Date</td>
+                <td th:text="${operation.balance.id}">Balance #</td>
+                <td>
+                    <a th:href="@{/operations/updateOperation/{id}(id=${operation.getId()})}" th:text="Actions">
+                        ...
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<hr>
+</section>
+</body>
+</html>

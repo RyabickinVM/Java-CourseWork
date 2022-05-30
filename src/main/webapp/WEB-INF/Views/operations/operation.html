@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Operations: Info</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1>Domestic Budget Automation</h1>
+    <h2>Operations</h2>
+    <h2>Info</h2>
+    <button><a th:href="@{/operations/operations}">Back</a></button>
+</div>
+<hr>
+<div style="text-align:center">
+<h2>
+    #<span th:text="${operation.getId()}">id</span>
+    <br/>
+    Article #<span th:text="${operation.article.id}">article_id</span>
+    <br/>
+    Debit: <span th:text="${operation.getDebit()}">debit</span>
+    <br/>
+    Credit: <span th:text="${operation.getCredit()}">credit</span>
+    <br/>
+    Creation Date: <span th:text="${operation.getCreate_date()}">create_date</span>
+    <br/>
+    Balance #<span th:text="${operation.balance.id}">balance_id</span>
+</h2>
+</div>
+<hr>
+</body>
+</html>

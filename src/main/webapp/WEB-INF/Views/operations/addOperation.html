@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Operations: Add</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1>Domestic Budget Automation</h1>
+    <h2>Operations</h2>
+    <h2>Add</h2>
+    <button><a th:href="@{/operations/operations}">Back</a></button>
+</div>
+<hr>
+<div style="text-align:center">
+<form th:method="POST" th:action="@{/operations/addOperation}" th:object="${operation}">
+    <label for="article">Article #: </label>
+    <select th:name="article" id="article">
+        <option value=""></option>
+        <option
+                th:each="art:${articles}"
+                th:value="${art.getId()}"
+                th:text="${art.getId()}">
+        </option>
+    </select>
+    <br/>
+    <label for="balance">Balance #: </label>
+    <select th:name="balance" id="balance">
+        <option value=""></option>
+        <option
+                th:each="bal:${balances}"
+                th:value="${bal.getId()}"
+                th:text="${bal.getId()}">
+        </option>
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" value="Add"/>
+</form>
+</div>
+<hr>
+</body>
+</html>

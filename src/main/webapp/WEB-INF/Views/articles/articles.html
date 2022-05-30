@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Articles: Table</title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1>Domestic Budget Automation</h1>
+        <h2>Articles</h2>
+        <h2>Table</h2>
+    <button><a th:href="@{/articles/addArticle}">Add</a></button>
+    <button><a th:href="@{/}">Back</a></button>
+    <form style="display: inline;" th:method="POST" th:action="@{/articles/delete}">
+        <input type="submit" value="Clear"/>
+    </form>
+    </div>
+    <hr>
+<section>
+    <div>
+        <table style="width:100%">
+            <thead>
+            <tr style="text-align: center; width: 30px">
+                <th>#</th>
+                <th>Name</th>
+                <th>...</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center">
+            <tr th:each = "article: ${articles}">
+                <td>
+                    <a th:href="@{/articles/getArticle/{id}(id=${article.getId()})}" th:text="${article.id}">
+                        #
+                    </a>
+                </td>
+                <td th:text="${article.name}">Name</td>
+                <td>
+                    <a th:href="@{/articles/updateArticle/{id}(id=${article.getId()})}" th:text="Actions">
+                        ...
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+</section>
+</body>
+</html>

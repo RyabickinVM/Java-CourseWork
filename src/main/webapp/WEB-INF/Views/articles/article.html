@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles: Info</title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1>Domestic Budget Automation</h1>
+        <h2>Articles</h2>
+        <h2>Info</h2>
+        <button><a th:href="@{/articles/articles}">Back</a></button>
+    </div>
+    <hr>
+    <div style="text-align:center">
+        <h2>
+            #<span th:text="${article.getId()}">id</span>
+            <br/>
+            Name: <span th:text="${article.getName()}">name</span>
+        </h2>
+    </div>
+    <hr>
+</body>
+</html>

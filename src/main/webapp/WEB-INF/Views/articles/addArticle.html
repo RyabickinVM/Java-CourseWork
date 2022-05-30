@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles: Add</title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1>Domestic Budget Automation</h1>
+        <h2>Articles</h2>
+        <h2>Add</h2>
+    </div>
+    <hr>
+    <div style="text-align:center">
+        <form th:method="POST" th:action="@{/articles/addArticle}" th:object="${article}">
+            <label for="name">Name: </label>
+            <input type="text" th:field="*{name}" placeholder="Name" id="name"/>
+            <br/>
+            <br/>
+            <input type="submit" value="Add"/>
+            <button><a th:href="@{/articles/articles}">Back</a></button>
+        </form>
+    </div>
+    <hr>
+</body>
+</html>

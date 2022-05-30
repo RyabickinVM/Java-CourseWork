@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Balance: Add</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1>Domestic Budget Automation</h1>
+    <h2>Balance</h2>
+    <h2>Add</h2>
+    <button><a th:href="@{/balance/balances}">Back</a></button>
+</div>
+<hr>
+<div style="text-align:center">
+    <form th:method="POST" th:action="@{/balance/addBalance}" th:object="${balance}">
+        <label for="create_date">Creation Date: </label>
+        <input type="datetime-local" th:field="*{create_date}" placeholder="Creation Date" id="create_date"/>
+        <br/>
+        <label for="debit">Debit: </label>
+        <input type="number" th:field="*{debit}" placeholder="Debit" id="debit"/>
+        <br/>
+        <label for="credit">Credit: </label>
+        <input type="number" th:field="*{credit}" placeholder="Credit" id="credit"/>
+        <br/>
+        <br/>
+        <input type="submit" value="Add"/>
+    </form>
+</div>
+<hr>
+</body>
+</html>

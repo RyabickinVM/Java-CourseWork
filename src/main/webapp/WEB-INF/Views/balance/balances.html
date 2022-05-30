@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Balance: Table</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1>Domestic Budget Automation</h1>
+    <h2>Balance</h2>
+    <h2>Table</h2>
+    <button><a th:href="@{/balance/addBalance}">Add</a></button>
+    <button><a th:href="@{/}">Back</a></button>
+    <form style="display: inline;" th:method="POST" th:action="@{/balance/delete}">
+        <input type="submit" value="Clear"/>
+    </form>
+</div>
+<hr>
+<section>
+    <div>
+        <table style="width:100%">
+            <thead>
+            <tr style="text-align: center; width: 30px">
+                <th>#</th>
+                <th>Creation Date</th>
+                <th>Debit</th>
+                <th>Credit</th>
+                <th>Amount</th>
+                <th>...</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center">
+            <tr th:each="balance: ${balances}">
+                <td>
+                    <a th:href="@{/balance/getBalance/{id}(id=${balance.getId()})}" th:text="${balance.id}">
+                        #
+                    </a>
+                </td>
+                <td th:text="${balance.create_date}">Creation Date</td>
+                <td th:text="${balance.debit}">Debit</td>
+                <td th:text="${balance.credit}">Credit</td>
+                <td th:text="${balance.amount}">Amount</td>
+                <td>
+                    <a th:href="@{/balance/updateBalance/{id}(id=${balance.getId()})}" th:text="Actions">
+                        ...
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+</section>
+</body>
+</html>
